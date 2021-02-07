@@ -51,19 +51,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        back2=findViewById(R.id.back2);
+        //Add back button------------------
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //Active Search Interface----------
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction()))
+        {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+//            Intent searchActivity = new Intent(HomeActivity.this,SearchActivity.class);
+//            searchActivity.putExtra("query",query);
+//            startActivity(searchActivity);
 
+            Toast.makeText(this, query, Toast.LENGTH_SHORT).show();
+        }
 
-        back2.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View v)
-            {
-                Intent intent=new Intent(MainActivity.this,SplashScreen.class);
-                startActivity(intent);
-            }
-        });
+//        back2=findViewById(R.id.back2);
+//
+//
+//
+//        back2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//
+//            public void onClick(View v)
+//            {
+//                Intent intent=new Intent(MainActivity.this,SplashScreen.class);
+//                startActivity(intent);
+//            }
+//        });
 
         homePageTab = findViewById(R.id.homePageTabLayout);
         homePageViewPage = findViewById(R.id.homePageViewPager);
@@ -92,6 +107,35 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.tool_menu,menu);
+
+        //Search Action.............
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        MenuItem menuItem = menu.findItem(R.id.search);
+
+        SearchView searchView = (SearchView) menuItem.getActionView();
+
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName())
+        );
+        searchView.setSubmitButtonEnabled(true);
+        return true;
+    }
+
+    //Enable Back Button---------------
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home)
+        {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     class MyPagerAdeptar extends FragmentPagerAdapter
     {
