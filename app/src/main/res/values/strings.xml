@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Car DTC</string>
+    <string name="cardtc">CarDTC</string>
+    <string name="sample_view_title">Sample View Title</string>
+    <string name="select_car">Select Car</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ADMOB_ADS_UNIT_ID">ca-app-pub-4322875230010734/9458628099</string>
+</resources>
