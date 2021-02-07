@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class europeFragment extends Fragment {
-    private static final String Base_Url = "http://obderrorcode.com";
+    private static final String Base_Url = "https://obderrorcode.com";
 
     RecyclerView recyclerView;
     Adapter adapter;

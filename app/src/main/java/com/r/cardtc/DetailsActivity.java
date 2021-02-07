@@ -54,7 +54,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static android.content.ContentValues.TAG;
 
 public class DetailsActivity extends AppCompatActivity {
-    private static final String Base_Url = "http://obderrorcode.com";
+    private static final String Base_Url = "https://obderrorcode.com";
     InterstitialAd mInterstitialAd;
     private AdView mAdView;
     ImageButton btnShare,back;
@@ -110,6 +110,7 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
+        refreshAd();
         //receive data----------
         Intent i = getIntent();
         final String selectedKey = i.getStringExtra("id");

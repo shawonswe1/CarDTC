@@ -35,7 +35,7 @@ import static android.content.ContentValues.TAG;
 
 
 public class AsiaFragment extends Fragment {
-    private static final String Base_Url = "http://obderrorcode.com";
+    private static final String Base_Url = "https://obderrorcode.com";
 
 
     RecyclerView recyclerView;
