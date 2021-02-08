@@ -59,11 +59,10 @@ public class MainActivity extends AppCompatActivity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction()))
         {
             String query = intent.getStringExtra(SearchManager.QUERY);
-//            Intent searchActivity = new Intent(HomeActivity.this,SearchActivity.class);
-//            searchActivity.putExtra("query",query);
-//            startActivity(searchActivity);
-
-            Toast.makeText(this, query, Toast.LENGTH_SHORT).show();
+            Intent searchActivity = new Intent(this,SearchActivity.class);
+            searchActivity.putExtra("query",query);
+            startActivity(searchActivity);
+//            Toast.makeText(this, query, Toast.LENGTH_SHORT).show();
         }
 
 //        back2=findViewById(R.id.back2);

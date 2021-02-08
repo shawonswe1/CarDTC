@@ -19,6 +19,9 @@ public interface MyRetrofit {
     @GET("/android/getDetails.php")
     Call<List<model>> getDetails(@Query("cuid")String cuid,
                                         @Query("code")String code);
+
+    @GET("/android/mySearch.php")
+    Call<List<model>> getSearch(@Query("Code_title") String Code_title);
    
 
 }

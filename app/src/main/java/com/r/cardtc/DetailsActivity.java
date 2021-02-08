@@ -1,5 +1,6 @@
 package com.r.cardtc;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -69,7 +71,9 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //Add back button------------------
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -86,29 +90,29 @@ public class DetailsActivity extends AppCompatActivity {
         resultLayout.setVisibility(View.GONE);
         defination = findViewById(R.id.defination);
         cause = findViewById(R.id.causes);
-        btnShare =  findViewById(R.id.btnShare);
-        back =  findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent=new Intent(DetailsActivity.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                String shareSubject = "";
-                String shareBody = "";
-                intent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
-                intent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                startActivity(Intent.createChooser(intent,"Share via"));
-            }
-        });
+//        btnShare =  findViewById(R.id.btnShare);
+//        back =  findViewById(R.id.back);
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                Intent intent=new Intent(DetailsActivity.this,MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        btnShare.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Intent.ACTION_SEND);
+//                intent.setType("text/plain");
+//                String shareSubject = "";
+//                String shareBody = "";
+//                intent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+//                intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+//                startActivity(Intent.createChooser(intent,"Share via"));
+//            }
+//        });
 
         refreshAd();
         //receive data----------
@@ -167,6 +171,17 @@ public class DetailsActivity extends AppCompatActivity {
     private void showList(List<model> body)
     {
         Log.e("List", String.valueOf(body.size()));
+    }
+
+    //Enable Back Button---------------
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home)
+        {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void closeKeyBord() {
