@@ -121,6 +121,7 @@ public class DetailsActivity extends AppCompatActivity {
         //receive data----------
         Intent i = getIntent();
         final String selectedKey = i.getStringExtra("id");
+        //Receive Image Url
         image = i.getStringExtra("image");
         Log.e("image",image);
 
@@ -150,9 +151,10 @@ public class DetailsActivity extends AppCompatActivity {
                             String code = list.get(0).getCode();
                             String details = list.get(0).getDetails();
                             String Cause = list.get(0).getCause();
+                            //Set Image Url into imageView
                             String Url = "http://obderrorcode.com/android";
-                            Log.e("Image",Url+image);
                             Glide.with(getApplicationContext()).load(Url+image).into(imageView);
+                            //------------------------------------------//
                             defination.setText(code+"\n"+"-"+details);
                             cause.setText(Cause);
 

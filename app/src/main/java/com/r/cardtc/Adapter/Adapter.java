@@ -56,6 +56,7 @@ public Adapter(){
             public void onClick(View v) {
                 Intent intent = new Intent(context,DetailsActivity.class);
                 intent.putExtra("id",getCar.getUid());
+                //Send Image Url
                 intent.putExtra("image",getCar.getImage());
                 context.startActivity(intent);
             }
