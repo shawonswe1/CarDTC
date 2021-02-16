@@ -22,6 +22,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
@@ -64,8 +65,9 @@ public class DetailsActivity extends AppCompatActivity {
     EditText code ;
     ConstraintLayout resultLayout;
     TextView defination,cause;
-    String c ;
+    String c,image ;
     UnifiedNativeAd nativeAd;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +92,7 @@ public class DetailsActivity extends AppCompatActivity {
         resultLayout.setVisibility(View.GONE);
         defination = findViewById(R.id.defination);
         cause = findViewById(R.id.causes);
+        imageView = findViewById(R.id.imageheader);
 //        btnShare =  findViewById(R.id.btnShare);
 //        back =  findViewById(R.id.back);
 //        back.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +121,8 @@ public class DetailsActivity extends AppCompatActivity {
         //receive data----------
         Intent i = getIntent();
         final String selectedKey = i.getStringExtra("id");
-        String title = i.getStringExtra("title");
+        image = i.getStringExtra("image");
+        Log.e("image",image);
 
         findCode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,8 +150,12 @@ public class DetailsActivity extends AppCompatActivity {
                             String code = list.get(0).getCode();
                             String details = list.get(0).getDetails();
                             String Cause = list.get(0).getCause();
+                            String Url = "http://obderrorcode.com/android";
+                            Log.e("Image",Url+image);
+                            Glide.with(getApplicationContext()).load(Url+image).into(imageView);
                             defination.setText(code+"\n"+"-"+details);
                             cause.setText(Cause);
+
                             Log.e("Code",code+"\n"+"-"+details);
                             showList(response.body());
                         }
