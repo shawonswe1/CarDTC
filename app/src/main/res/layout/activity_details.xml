@@ -102,7 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="P0000 SAE Reserved \n-Usage not allowed except as padding in DTC"
+                    android:text="Your Code Not exist"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
 
@@ -119,7 +119,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="-No Information"
+                    android:text="Information not found"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
             </LinearLayout>

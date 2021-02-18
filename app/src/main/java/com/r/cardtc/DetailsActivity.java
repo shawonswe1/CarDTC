@@ -120,10 +120,11 @@ public class DetailsActivity extends AppCompatActivity {
         refreshAd();
         //receive data----------
         Intent i = getIntent();
-        final String selectedKey = i.getStringExtra("id");
+//        final String selectedKey = i.getStringExtra("id");
+        final String selectedKey = "A4BA0E";
         //Receive Image Url
         image = i.getStringExtra("image");
-        Log.e("image",image);
+//        Log.e("image",image);
 
         findCode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,17 +149,26 @@ public class DetailsActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<List<model>> call, Response<List<model>> response) {
                             List<model> list = response.body();
-                            String code = list.get(0).getCode();
-                            String details = list.get(0).getDetails();
-                            String Cause = list.get(0).getCause();
-                            //Set Image Url into imageView
-                            String Url = "http://obderrorcode.com/android";
-                            Glide.with(getApplicationContext()).load(Url+image).into(imageView);
-                            //------------------------------------------//
-                            defination.setText(code+"\n"+"-"+details);
-                            cause.setText(Cause);
 
-                            Log.e("Code",code+"\n"+"-"+details);
+                            if(list.size()==0)
+                            {
+                                Log.e("Message","Data length is 0");
+                            }
+                            else
+                            {
+                                String code = list.get(0).getCode();
+                                String details = list.get(0).getDetails();
+                                String Cause = list.get(0).getCause();
+                                //Set Image Url into imageView
+//                            String Url = "http://obderrorcode.com/android";
+//                            Glide.with(getApplicationContext()).load(Url+image).into(imageView);
+                                //------------------------------------------//
+                                defination.setText(code+"\n"+"-"+details);
+                                cause.setText(Cause);
+
+                                Log.e("Code",code+"\n"+"-"+details);
+                            }
+
                             showList(response.body());
                         }
 
